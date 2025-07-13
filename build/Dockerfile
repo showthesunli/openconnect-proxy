@@ -43,6 +43,8 @@ exec "$@"' > /usr/local/bin/fix-dns && chmod +x /usr/local/bin/fix-dns
 COPY --chmod=755 vpnc-script /etc/vpnc/vpnc-script
 COPY tinyproxy.conf /etc/tinyproxy.conf
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
+COPY oc_csd_fake.sh /etc/oc_csd_fake.sh
+RUN chmod +x /etc/oc_csd_fake.sh
 
 EXPOSE 8888 8889
 ENTRYPOINT ["/usr/local/bin/fix-dns", "/entrypoint.sh"]
