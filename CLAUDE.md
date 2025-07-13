@@ -123,15 +123,8 @@ OPENCONNECT_URL=https://vpn.uci.edu
 OPENCONNECT_USER=<你的 NetID>
 OPENCONNECT_PASSWORD=<你的 NetID 密码>      # 或留空 → 容器启动时交互输入
 
-# OpenConnect 启动选项（全部放一行）
-OPENCONNECT_OPTIONS="\
-  --authgroup=UCIFull \                       # 选对组，避开 302→404
-  --protocol=anyconnect \                     # 明确协议
-  --os=win \                                  # 伪装 Windows
-  --useragent='AnyConnect Windows 4.10.06079' \ # 与官方客户端一致
-  --no-xmlpost \                              # 跳过不被接受的 XML-POST
-  --csd-wrapper=/etc/oc_csd_fake.sh \         # HostScan 秒过
-  --reconnect-timeout=86400"                  # 可选：断线自动重连 24 h
+# OpenConnect 启动选项（单行，Docker .env 格式）
+OPENCONNECT_OPTIONS="--authgroup=UCIFull --protocol=anyconnect --os=win --useragent='AnyConnect Windows 4.10.06079' --no-xmlpost --csd-wrapper=/etc/oc_csd_fake.sh --reconnect-timeout=86400"
 
 # 是否做路由分流（0=全局，1=分流）
 VPN_SPLIT=0
