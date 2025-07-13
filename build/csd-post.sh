@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Cisco Anyconnect CSD wrapper for OpenConnect
 #
 # Instead of actually downloading and spawning the hostscan trojan,
@@ -106,9 +106,9 @@ if [ -n "$XMLSTARLET" ]; then
 
     curl $PINNEDPUBKEY -s "$URL" | xmlstarlet sel -t -v '/data/hostscan/field/@value' | while read -r ENTRY; do
 	# XX: How are ' and , characters escaped in this?
-	TYPE="$(sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\1/" <<< "$ENTRY")"
-	NAME="$(sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\2/" <<< "$ENTRY")"
-	VALUE="$(sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\3/" <<< "$ENTRY")"
+	TYPE="$(echo "$ENTRY" | sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\1/")"
+	NAME="$(echo "$ENTRY" | sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\2/")"
+	VALUE="$(echo "$ENTRY" | sed "s/^'\(.*\)','\(.*\)','\(.*\)'$/\3/")"
 
 	if [ "$TYPE" != "$ENTRY" ]; then
 	    case "$TYPE" in

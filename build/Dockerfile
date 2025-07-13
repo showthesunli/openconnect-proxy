@@ -43,11 +43,11 @@ exec "$@"' > /usr/local/bin/fix-dns && chmod +x /usr/local/bin/fix-dns
 COPY --chmod=755 vpnc-script /etc/vpnc/vpnc-script
 COPY tinyproxy.conf /etc/tinyproxy.conf
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
+# 安装CSD脚本依赖
+RUN apk add --no-cache curl xmlstarlet bash
+
 COPY csd-post.sh /etc/csd-post.sh
 RUN chmod +x /etc/csd-post.sh
-
-# 安装CSD脚本依赖
-RUN apk add --no-cache curl xmlstarlet
 
 EXPOSE 8888 8889
 ENTRYPOINT ["/usr/local/bin/fix-dns", "/entrypoint.sh"]
