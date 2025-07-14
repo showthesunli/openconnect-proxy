@@ -1,5 +1,5 @@
 #!/bin/sh
-# 秒通过 UCI 的 CSD / HostScan 检查
+# HostScan检查绕过脚本
 
 # 使用临时文件代替$COOKIE变量
 cat > /tmp/cookie.xml <<EOF

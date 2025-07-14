@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# UCI VPN SOCKS5代理测试脚本
+# SOCKS5代理测试脚本
 
-echo "=== UCI VPN SOCKS5代理测试 ==="
-echo "测试SOCKS5代理 (端口8889) 连通性"
+echo "=== SOCKS5代理测试 ==="
+echo "测试SOCKS5代理连通性"
 echo
 
 # 颜色输出
